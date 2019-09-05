@@ -10,3 +10,10 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+# IntelliJ auto generated files
+.idea
+*.iml
+
+# MacOS rendering files
+.DS_store
