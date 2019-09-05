@@ -17,3 +17,6 @@
 
 # MacOS rendering files
 .DS_store
+
+# custom
+*.prof
