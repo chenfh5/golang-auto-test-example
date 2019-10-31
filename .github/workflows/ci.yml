@@ -19,14 +19,10 @@ jobs:
           go-version: 1.12
 
       - name: go module
-        run: |
-          go mod tidy
-          go mod verify
+        run: go mod tidy && go mod verify
 
       - name: go lint
-        run: |
-          go get -u golang.org/x/lint/golint
-          golint ./...
+        run: go get -u golang.org/x/lint/golint && golint ./...
 
       - name: run tests
         run: go test ./... -v -race -count=1 -cover
