@@ -16,6 +16,11 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: print env
+        run: |
+          pwd
+          ls -l
+
       - name: set up Go 1.12
         uses: actions/setup-go@v1
         with:

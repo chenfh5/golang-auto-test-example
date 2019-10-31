@@ -1,4 +1,4 @@
-module github.com/chenfh5/golang-auto-test-example
+module golang-auto-test-example
 
 go 1.12
 
