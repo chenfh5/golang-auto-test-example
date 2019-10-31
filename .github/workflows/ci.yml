@@ -17,7 +17,6 @@ jobs:
         uses: actions/setup-go@v1
         with:
           go-version: 1.12
-        run: go get -u golang.org/x/lint/golint
 
       - name: go module
         run: |
@@ -25,7 +24,9 @@ jobs:
           go mod verify
 
       - name: go lint
-        run: golint ./...
+        run: |
+          go get -u golang.org/x/lint/golint
+          golint ./...
 
       - name: run tests
         run: go test ./... -v -race -count=1 -cover
