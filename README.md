@@ -1,3 +1,5 @@
+![](https://github.com/chenfh5/golang-auto-test-example/workflows/golang-auto-test-example-ci/badge.svg)
+
 # Overview
 follow it to find out how to use auto generate go test to strengthen your production code
 
