@@ -6,7 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print begin greet
-        run: echo begin Github Action CI at `date`
+        run: |
+          pwd
+          ls -l
+          echo begin Github Action CI at `date`
 
       - name: checkout code
         uses: actions/checkout@v1
@@ -19,10 +22,14 @@ jobs:
           go-version: 1.12
 
       - name: go module
-        run: go mod tidy && go mod verify
+        run: |
+          go mod tidy
+          go mod verify
 
       - name: go lint
-        run: go get -u golang.org/x/lint/golint && golint ./...
+        run: |
+          go get -u golang.org/x/lint/golint
+          `go list -f {{.Target}} golang.org/x/lint/golint` ./...
 
       - name: run tests
         run: go test ./... -v -race -count=1 -cover
