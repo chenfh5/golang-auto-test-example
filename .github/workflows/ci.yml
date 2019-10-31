@@ -13,16 +13,33 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: set up Go 1.13
+      - name: print env
+        run: |
+          pwd
+          ls -l
+
+      - name: set up Go 1.12
         uses: actions/setup-go@v1
         with:
-          go-version: 1.13
+          go-version: 1.12
+
+      - name: go module
+        run: |
+          go mod tidy
+          go mod verify
+
+      - name: go lint
+        run: |
+          go get -u golang.org/x/lint/golint
+          `go list -f {{.Target}} golang.org/x/lint/golint` ./...
 
       - name: run tests
         run: go test ./... -v -race -count=1 -cover
 
       - name: run benchmark
-        run: go test -v -bench=. -run=none -cpuprofile cpu.prof -memprofile mem.prof -count=1 -cover
+        run: |
+          cd prd
+          go test -v -bench=. -run=none -cpuprofile cpu.prof -memprofile mem.prof -count=1 -cover
 
       - name: print end greet
         run: echo end Github Action CI at `date`
